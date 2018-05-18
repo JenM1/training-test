@@ -39,3 +39,19 @@ catch_df <- catch_df %>%
 head(catch_df, 30)
   
 ```
+
+# Analysis
+
+Calculate mean Chinook by region and year
+
+```{r}
+annual_catch <- catch_df %>% 
+  filter(Species =="Chinook") %>% 
+  group_by(Region, Year) %>% 
+  summarise(mean_catch = mean(catch), num_obs=n()) %>% 
+  arrange(desc(mean_catch))
+
+head(annual_catch, 30)
+```
+
+Sorting data
